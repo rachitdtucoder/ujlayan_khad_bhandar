@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>UJLAYAN'S AGRICULTURE MEDICINES</h1>
+        <form id="medicineForm">
+            <input type="text" id="name" placeholder="Medicine Name" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="number" id="buyingPrice" placeholder="Buying Price" required>
+            <input type="number" id="sellingPrice" placeholder="Selling Price" required>
+            <button type="submit">Add Medicine</button>
+        </form>
+        <table id="medicineTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Buying Price</th>
+                    <th>Selling Price</th>
+                    <th>Sold</th>
+                    <th>Profit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Medicine rows will go here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
