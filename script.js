@@ -12,15 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const quantity = document.getElementById('quantity').value;
         const buyingPrice = document.getElementById('buyingPrice').value;
-        const sellingPrice = document.getElementById('sellingPrice').value;
 
         const medicine = {
             name,
             quantity,
             buyingPrice,
-            sellingPrice,
-            sold: 0,
-            profit: calculateProfit(buyingPrice, sellingPrice, 0)
         };
 
         addMedicineToTable(medicine);
@@ -36,11 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${medicine.name}</td>
             <td><input type="number" value="${medicine.quantity}" class="quantity" data-initial-quantity="${medicine.quantity}"></td>
             <td>${medicine.buyingPrice}</td>
-            <td>${medicine.sellingPrice}</td>
-            <td class="sold">${medicine.sold}</td>
-            <td class="profit">${medicine.profit}</td>
             <td>
-                <button class="edit">Edit</button>
                 <button class="delete">Delete</button>
             </td>
         `;
@@ -61,22 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function calculateProfit(buyingPrice, sellingPrice, soldQuantity) {
-        return soldQuantity * (sellingPrice - buyingPrice);
-    }
 
-    function updateProfitAndSold(row, medicine) {
-        const initialQuantity = row.querySelector('.quantity').getAttribute('data-initial-quantity');
-        const currentQuantity = row.querySelector('.quantity').value;
-        const soldQuantity = initialQuantity - currentQuantity;
-        row.querySelector('.sold').innerText = soldQuantity;
-        row.querySelector('.profit').innerText = calculateProfit(medicine.buyingPrice, medicine.sellingPrice, soldQuantity);
-
-        medicine.quantity = currentQuantity;
-        medicine.sold = soldQuantity;
-        medicine.profit = calculateProfit(medicine.buyingPrice, medicine.sellingPrice, soldQuantity);
-        saveAllMedicines();
-    }
 
     function editMedicine(row, medicine) {
         document.getElementById('name').value = medicine.name;
